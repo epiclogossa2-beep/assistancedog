@@ -2,48 +2,6 @@
 (function(){
   "use strict";
 
-  /* ---------- Paw print that walks the scroll progress ---------- */
-  var pawSVG =
-    '<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">' +
-    '<ellipse cx="32" cy="40" rx="16" ry="14"/>' +
-    '<ellipse cx="14" cy="20" rx="7" ry="9"/>' +
-    '<ellipse cx="30" cy="10" rx="7.5" ry="9.5"/>' +
-    '<ellipse cx="48" cy="14" rx="7" ry="9"/>' +
-    '<ellipse cx="54" cy="30" rx="6.5" ry="8.5"/>' +
-    '</svg>';
-
-  function initPawTrack(){
-    var track = document.createElement('div');
-    track.id = 'paw-track';
-    track.innerHTML =
-      '<div class="rail"></div><div class="rail-fill"></div>' + pawSVG;
-    document.body.appendChild(track);
-
-    var fill = track.querySelector('.rail-fill');
-    var paw = track.querySelector('svg');
-    var ticking = false;
-
-    function update(){
-      var scrollTop = window.scrollY || document.documentElement.scrollTop;
-      var height = document.documentElement.scrollHeight - window.innerHeight;
-      var pct = height > 0 ? Math.min(100, (scrollTop / height) * 100) : 0;
-      fill.style.width = pct + '%';
-      var x = (pct / 100) * (window.innerWidth - 40);
-      var wobble = (Math.sin(scrollTop / 40) * 10);
-      paw.style.transform = 'translateX(' + x + 'px) rotate(' + wobble + 'deg)';
-      ticking = false;
-    }
-
-    window.addEventListener('scroll', function(){
-      if(!ticking){
-        window.requestAnimationFrame(update);
-        ticking = true;
-      }
-    }, { passive: true });
-
-    update();
-  }
-
   /* ---------- Mobile nav toggle ---------- */
   function initNavToggle(){
     var btn = document.querySelector('.nav-toggle');
@@ -108,7 +66,6 @@
   }
 
   document.addEventListener('DOMContentLoaded', function(){
-    initPawTrack();
     initNavToggle();
     initReveal();
     initActiveNav();
