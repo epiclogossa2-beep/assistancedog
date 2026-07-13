@@ -300,12 +300,7 @@ nav.main-nav a.is-active .nav-icon{
   z-index: 0;
   background-size: cover;
   background-position: center;
-  /* Placeholder pattern until a real photo is added — replace background-image below with:
-     background-image: url('assets/img/hero-photo.jpg'); */
-  background-image:
-    repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 2px, transparent 2px 18px),
-    radial-gradient(circle at 30% 30%, rgba(255,255,255,.08), transparent 60%),
-    linear-gradient(155deg, #4a6390, #2c3e5c);
+  background-image: url('assets/img/Home-hero.png');
 }
 .hero::before{
   content:'';
