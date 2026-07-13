@@ -300,7 +300,7 @@ nav.main-nav a.is-active .nav-icon{
   z-index: 0;
   background-size: cover;
   background-position: center;
-  background-image: url('assets/img/Home-hero.png');
+  background-image: url('../img/Home-hero.png');
 }
 .hero::before{
   content:'';
