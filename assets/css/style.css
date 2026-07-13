@@ -138,7 +138,9 @@ nav.main-nav ul{
   align-items: center;
 }
 nav.main-nav a{
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 10px 16px;
   border-radius: var(--radius-pill);
   font-size: .92rem;
@@ -149,13 +151,47 @@ nav.main-nav a{
 nav.main-nav a:hover{ background: rgba(63,87,129,.08); }
 nav.main-nav a.is-active{ background: var(--navy); color: var(--white); }
 
+nav.main-nav a .nav-paw{
+  width: 0;
+  height: 12px;
+  opacity: 0;
+  transform: scale(.4) rotate(-25deg);
+  transition: width .25s var(--ease), opacity .2s var(--ease), transform .25s var(--ease);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+nav.main-nav a .nav-paw svg{ width: 12px; height: 12px; display:block; fill: var(--gold); }
+nav.main-nav a.is-active .nav-paw svg{ fill: var(--gold); }
+nav.main-nav a:hover .nav-paw,
+nav.main-nav a.is-active .nav-paw{
+  width: 12px;
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
 .nav-cta{
-  background: var(--leaf);
+  position: relative;
+  background: linear-gradient(120deg, var(--leaf), var(--gold), var(--leaf-dark), var(--leaf));
+  background-size: 300% 100%;
+  animation: nav-cta-shift 6s ease-in-out infinite;
   color: var(--navy-deep) !important;
   font-weight: 700 !important;
   box-shadow: var(--shadow-sm);
+  transition: box-shadow .25s var(--ease), transform .2s var(--ease);
 }
-.nav-cta:hover{ background: var(--leaf-dark) !important; }
+.nav-cta:hover{
+  animation-duration: 2.4s;
+  box-shadow: 0 0 0 5px rgba(147,206,83,.22), var(--shadow-md);
+  transform: translateY(-2px);
+}
+@keyframes nav-cta-shift{
+  0%{ background-position: 0% 50%; }
+  50%{ background-position: 100% 50%; }
+  100%{ background-position: 0% 50%; }
+}
+@media (prefers-reduced-motion: reduce){
+  .nav-cta{ animation: none; background: var(--leaf); }
+}
 
 .nav-toggle{
   display:none;
@@ -456,7 +492,6 @@ nav.main-nav a.is-active{ background: var(--navy); color: var(--white); }
 .page-hero::before{
   content:'';
   position: absolute; inset: 0;
-  background: radial-gradient(circle at 90% 0%, rgba(227,167,69,.3), transparent 45%);
 }
 .page-hero::after{
   content:'';
