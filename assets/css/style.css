@@ -247,7 +247,7 @@ nav.main-nav a.is-active .nav-icon{
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  z-index: 0;
+  z-index: 3;
 }
 .floating-paws svg{
   position: absolute;
@@ -289,20 +289,36 @@ nav.main-nav a.is-active .nav-icon{
 /* ---------- Hero ---------- */
 .hero{
   position: relative;
-  background: linear-gradient(155deg, var(--navy), var(--navy) 60%, var(--navy-dark));
+  background: var(--navy-deep);
   color: var(--white);
   overflow: hidden;
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }
+.hero-bg-photo{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  /* Placeholder pattern until a real photo is added — replace background-image below with:
+     background-image: url('assets/img/hero-photo.jpg'); */
+  background-image:
+    repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 2px, transparent 2px 18px),
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,.08), transparent 60%),
+    linear-gradient(155deg, #4a6390, #2c3e5c);
+}
 .hero::before{
   content:'';
   position: absolute; inset: 0;
+  z-index: 1;
+  background: linear-gradient(155deg, rgba(31,44,64,.86), rgba(63,87,129,.74) 55%, rgba(44,62,92,.88));
   pointer-events: none;
 }
 .hero::after{
   /* subtle grain for a printed, designed texture instead of flat gradient */
   content:'';
   position: absolute; inset: 0;
+  z-index: 2;
   opacity: .5;
   mix-blend-mode: overlay;
   pointer-events: none;
@@ -317,7 +333,7 @@ nav.main-nav a.is-active .nav-icon{
 }
 .hero-inner{
   position: relative;
-  z-index: 1;
+  z-index: 3;
   padding: 100px 24px 120px;
   max-width: 780px;
   margin: 0 auto;
