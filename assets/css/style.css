@@ -205,6 +205,51 @@ nav.main-nav a.is-active{ background: var(--navy); color: var(--white); }
 .btn-ghost-white{ background: rgba(255,255,255,.14); color: var(--white); border: 1.5px solid rgba(255,255,255,.5); }
 .btn-ghost-white:hover{ background: var(--white); color: var(--navy-deep); }
 
+/* ---------- Floating paw prints (hero ambient motion) ---------- */
+.floating-paws{
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.floating-paws svg{
+  position: absolute;
+  opacity: .22;
+}
+.floating-paws svg.paw-gold{ fill: var(--gold); }
+.floating-paws svg.paw-leaf{ fill: var(--leaf); }
+.floating-paws svg.paw-white{ fill: var(--white); }
+
+@keyframes paw-drift-a{
+  0%, 100%{ transform: translate(0,0) rotate(0deg); opacity: .16; }
+  50%{ transform: translate(12px,-24px) rotate(10deg); opacity: .3; }
+}
+@keyframes paw-drift-b{
+  0%, 100%{ transform: translate(0,0) rotate(0deg); opacity: .14; }
+  50%{ transform: translate(-16px,-18px) rotate(-9deg); opacity: .28; }
+}
+@keyframes paw-drift-c{
+  0%, 100%{ transform: translate(0,0) rotate(0deg); opacity: .2; }
+  50%{ transform: translate(8px,-28px) rotate(7deg); opacity: .34; }
+}
+
+.floating-paws .p1{ top: 12%; left: 7%;  width: 34px; height: 34px; animation: paw-drift-a 8s ease-in-out infinite; }
+.floating-paws .p2{ top: 30%; left: 22%; width: 16px; height: 16px; animation: paw-drift-b 10s ease-in-out infinite; animation-delay: .6s; }
+.floating-paws .p3{ top: 64%; left: 13%; width: 24px; height: 24px; animation: paw-drift-c 9s ease-in-out infinite; animation-delay: 1.4s; }
+.floating-paws .p4{ top: 16%; right: 9%;  width: 28px; height: 28px; animation: paw-drift-b 11s ease-in-out infinite; animation-delay: 2s; }
+.floating-paws .p5{ top: 70%; right: 17%; width: 20px; height: 20px; animation: paw-drift-a 9.5s ease-in-out infinite; animation-delay: 1s; }
+.floating-paws .p6{ top: 46%; right: 30%; width: 14px; height: 14px; animation: paw-drift-c 7.5s ease-in-out infinite; animation-delay: .3s; }
+.floating-paws .p7{ top: 8%;  left: 42%;  width: 12px; height: 12px; animation: paw-drift-a 8.8s ease-in-out infinite; animation-delay: 2.4s; }
+.floating-paws .p8{ top: 80%; left: 40%;  width: 30px; height: 30px; animation: paw-drift-b 10.5s ease-in-out infinite; animation-delay: 1.7s; }
+
+@media (prefers-reduced-motion: reduce){
+  .floating-paws svg{ animation: none !important; }
+}
+@media (max-width: 720px){
+  .floating-paws .p2, .floating-paws .p6, .floating-paws .p7{ display:none; }
+}
+
 /* ---------- Hero ---------- */
 .hero{
   position: relative;
@@ -216,9 +261,6 @@ nav.main-nav a.is-active{ background: var(--navy); color: var(--white); }
 .hero::before{
   content:'';
   position: absolute; inset: 0;
-  background:
-    radial-gradient(circle at 85% 15%, rgba(227,167,69,.35), transparent 45%),
-    radial-gradient(circle at 10% 90%, rgba(147,206,83,.25), transparent 40%);
   pointer-events: none;
 }
 .hero::after{
