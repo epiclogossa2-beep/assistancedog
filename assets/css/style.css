@@ -151,20 +151,20 @@ nav.main-nav a{
 nav.main-nav a:hover{ background: rgba(63,87,129,.08); }
 nav.main-nav a.is-active{ background: var(--navy); color: var(--white); }
 
-nav.main-nav a .nav-paw{
+nav.main-nav a .nav-icon{
   width: 0;
-  height: 12px;
+  height: 13px;
   opacity: 0;
   transform: scale(.4) rotate(-25deg);
   transition: width .25s var(--ease), opacity .2s var(--ease), transform .25s var(--ease);
   overflow: hidden;
   flex-shrink: 0;
 }
-nav.main-nav a .nav-paw svg{ width: 12px; height: 12px; display:block; fill: var(--gold); }
-nav.main-nav a.is-active .nav-paw svg{ fill: var(--gold); }
-nav.main-nav a:hover .nav-paw,
-nav.main-nav a.is-active .nav-paw{
-  width: 12px;
+nav.main-nav a .nav-icon svg{ width: 13px; height: 13px; display:block; fill: none; stroke: var(--gold); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+nav.main-nav a.is-active .nav-icon svg{ stroke: var(--gold); }
+nav.main-nav a:hover .nav-icon,
+nav.main-nav a.is-active .nav-icon{
+  width: 15px;
   opacity: 1;
   transform: scale(1) rotate(0deg);
 }
