@@ -254,6 +254,11 @@
       });
     }, { threshold: 0.15 });
     items.forEach(function(el){ io.observe(el); });
+
+    // Safety net: force-reveal anything still hidden after 2s
+    setTimeout(function(){
+      items.forEach(function(el){ el.classList.add('is-visible'); });
+    }, 2000);
   }
 
   /* ---------- Highlight current nav link ---------- */
