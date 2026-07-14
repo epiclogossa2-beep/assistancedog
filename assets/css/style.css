@@ -971,3 +971,17 @@ footer a:hover{ color: var(--gold); }
 .text-center .hero-actions{
   justify-content: center;
 }
+
+.ph-square {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.ph-square .about-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px;
+}
