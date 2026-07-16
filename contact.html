@@ -53,7 +53,15 @@
     <div class="container two-col reveal" style="align-items:flex-start;">
 
       <div class="form-wrap">
-        <form id="enquiry-form">
+        <form id="enquiry-form" action="https://api.web3forms.com/submit" method="POST">
+
+    <input type="hidden" name="access_key" value="b67a263c-2274-42f8-85bc-a760392986d6">
+
+    <input type="hidden" name="subject" value="New Assistance Dog Enquiry">
+
+    <input type="hidden" name="from_name" value="Assistance Dogs South Africa Website">
+
+    <input type="checkbox" name="botcheck" style="display:none;">
           <div class="field-row">
             <div class="field">
               <label for="name">Full Name</label>
