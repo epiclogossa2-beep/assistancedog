@@ -273,20 +273,56 @@
   }
 
   /* ---------- Contact form (static-site friendly demo handling) ---------- */
-  function initForm(){
-    var form = document.getElementById('enquiry-form');
-    if(!form) return;
-    form.addEventListener('submit', function(e){
-      e.preventDefault();
-      var note = document.getElementById('form-note');
-      var name = form.querySelector('#name').value || 'there';
-      if(note){
-        note.textContent = 'Thank you, ' + name.split(' ')[0] + ' — your enquiry has been noted. Our team will be in touch soon.';
-        note.classList.add('is-visible');
-      }
-      form.reset();
+  function initForm() {
+    const form = document.getElementById("enquiry-form");
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const note = document.getElementById("form-note");
+
+    form.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        const originalText = submitBtn.textContent;
+
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true;
+
+        note.textContent = "";
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                note.style.color = "#2e7d32";
+                note.textContent =
+                    "Thank you! Your enquiry has been sent successfully.";
+
+                form.reset();
+            } else {
+                note.style.color = "#c62828";
+                note.textContent =
+                    result.message || "Something went wrong.";
+            }
+
+        } catch (error) {
+            note.style.color = "#c62828";
+            note.textContent =
+                "Something went wrong. Please try again.";
+
+        } finally {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+        }
     });
-  }
+}
+
+initForm();
 
   document.addEventListener('DOMContentLoaded', function(){
     initNavToggle();
