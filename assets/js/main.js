@@ -278,7 +278,6 @@
 function initForm() {
     const form = document.getElementById("enquiry-form");
 
-    // Don't run on pages without the enquiry form
     if (!form) return;
 
     const submitBtn = form.querySelector('button[type="submit"]');
@@ -287,7 +286,6 @@ function initForm() {
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
 
-        // Set reply-to email automatically
         const replyTo = form.querySelector('input[name="replyto"]');
         if (replyTo) {
             replyTo.value = document.getElementById("email").value;
@@ -333,3 +331,16 @@ function initForm() {
         }
     });
 }
+
+/* ---------- Initialise everything ---------- */
+document.addEventListener('DOMContentLoaded', function () {
+    initNavToggle();
+    initReveal();
+    initParallax();
+    initActiveNav();
+    initForm();
+    initQuiz();
+    initPrefillFromQuiz();
+});
+
+})();
