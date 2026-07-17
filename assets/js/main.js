@@ -273,13 +273,25 @@
   }
 
   /* ---------- Contact form (static-site friendly demo handling) ---------- */
-  function initForm() {
+
+  /* ---------- Contact form (Web3Forms) ---------- */
+function initForm() {
     const form = document.getElementById("enquiry-form");
+
+    // Don't run on pages without the enquiry form
+    if (!form) return;
+
     const submitBtn = form.querySelector('button[type="submit"]');
     const note = document.getElementById("form-note");
 
     form.addEventListener("submit", async function (e) {
         e.preventDefault();
+
+        // Set reply-to email automatically
+        const replyTo = form.querySelector('input[name="replyto"]');
+        if (replyTo) {
+            replyTo.value = document.getElementById("email").value;
+        }
 
         const formData = new FormData(form);
 
@@ -307,7 +319,7 @@
             } else {
                 note.style.color = "#c62828";
                 note.textContent =
-                    result.message || "Something went wrong.";
+                    result.message || "Something went wrong. Please try again.";
             }
 
         } catch (error) {
@@ -321,16 +333,3 @@
         }
     });
 }
-
-initForm();
-
-  document.addEventListener('DOMContentLoaded', function(){
-    initNavToggle();
-    initReveal();
-    initParallax();
-    initActiveNav();
-    initForm();
-    initQuiz();
-    initPrefillFromQuiz();
-  });
-})();
