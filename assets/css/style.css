@@ -999,3 +999,37 @@ footer a:hover{ color: var(--gold); }
   display: block;
   border-radius: 20px;
 }
+
+/* ---------- Donate page ---------- */
+.page-hero-photo::before{z-index:1;background:linear-gradient(155deg,rgba(31,44,64,.86),rgba(63,87,129,.74) 55%,rgba(44,62,92,.88));}
+.page-hero-photo::after{z-index:2;}
+.page-hero-photo .container-wide{position:relative;z-index:3;}
+.photo-rounded{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius-lg);box-shadow:var(--shadow-md);}
+.vision-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+.vision-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius-md);overflow:hidden;box-shadow:var(--shadow-sm);}
+.vision-card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.vision-body{padding:26px 24px 30px;}
+.vision-num{font-family:var(--font-display);font-weight:800;color:var(--gold);font-size:.85rem;letter-spacing:.1em;}
+.vision-body h3{font-size:1.3rem;margin:.2em 0 .8em;}
+.paw-list li{position:relative;padding-left:26px;margin-bottom:10px;font-size:.93rem;line-height:1.5;color:var(--ink-soft);}
+.paw-list li::before{content:'';position:absolute;left:0;top:.3em;width:14px;height:14px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='%23e3a745'%3E%3Cellipse cx='32' cy='40' rx='16' ry='14'/%3E%3Cellipse cx='14' cy='20' rx='7' ry='9'/%3E%3Cellipse cx='30' cy='10' rx='7.5' ry='9.5'/%3E%3Cellipse cx='48' cy='14' rx='7' ry='9'/%3E%3Cellipse cx='54' cy='30' rx='6.5' ry='8.5'/%3E%3C/svg%3E") no-repeat center/contain;}
+.photo-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.photo-strip img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--radius-md);display:block;}
+.bank-card{max-width:760px;margin:0 auto;background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--line);box-shadow:var(--shadow-md);padding:10px 36px;}
+.bank-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);}
+.bank-row:last-child{border-bottom:none;}
+.bank-label{display:block;font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:3px;}
+.bank-row strong{color:var(--navy-deep);font-family:var(--font-display);font-size:1.05rem;word-break:break-word;}
+.copy-btn{flex-shrink:0;border:1.5px solid var(--navy);background:transparent;color:var(--navy);font-weight:700;font-size:.78rem;padding:7px 16px;border-radius:var(--radius-pill);cursor:pointer;}
+.copy-btn:hover{background:var(--navy);color:var(--white);}
+@media (max-width:900px){.vision-grid{grid-template-columns:1fr;}.photo-strip{grid-template-columns:1fr;}.bank-card{padding:6px 20px;}}
+
+/* collapse nav earlier now that there are 7 items */
+@media (max-width:1100px){
+  nav.main-nav{position:fixed;top:124px;left:0;right:0;background:rgba(255,255,255,.88);backdrop-filter:blur(20px) saturate(1.6);-webkit-backdrop-filter:blur(20px) saturate(1.6);box-shadow:var(--shadow-md);padding:10px 24px 20px;transform:translateY(-140%);opacity:0;transition:transform .3s var(--ease),opacity .3s var(--ease);z-index:90;}
+  nav.main-nav.open{transform:translateY(0);opacity:1;}
+  nav.main-nav ul{flex-direction:column;align-items:stretch;gap:4px;}
+  nav.main-nav a{justify-content:center;padding:12px 16px;}
+  .nav-toggle{display:flex;}
+}
+@media (max-width:720px){nav.main-nav{top:96px;}}
